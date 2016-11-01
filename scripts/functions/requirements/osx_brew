@@ -288,6 +288,7 @@ requirements_osx_brew_libs_default()
   esac
   brew_libs_conf+=( libyaml readline libksba openssl )
   requirements_check "${brew_libs[@]}" "${brew_libs_conf[@]}" || return $?
+  requirements_osx_brew_check_custom homebrew/dupes # for: zlib
 }
 
 requirements_osx_brew_define()
@@ -295,6 +296,7 @@ requirements_osx_brew_define()
   case "$1" in
     (rvm)
       requirements_check zlib
+      requirements_osx_brew_check_custom homebrew/dupes
       ;;
     (jruby*)
       if
